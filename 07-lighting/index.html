@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Lighting &amp; Controls — TAIONTERRACE Manuals</title>
+<meta name="description" content="Smart lighting and remote controls — manuals for the lighting &amp; controls in the TAIONTERRACE flat.">
+<link rel="stylesheet" href="../assets/css/main.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%230b0f14'/><circle cx='16' cy='16' r='6' fill='%234da3ff'/></svg>">
+</head>
+
+<body data-title-en="Lighting &amp; Controls — TAIONTERRACE Manuals" data-title-zh="燈光及遙控 — TAIONTERRACE 說明書">
+<header class="top"><div class="wrap top-in">
+<div class="brand"><span class="dot"></span><a href="../index.html" style="color:inherit">TAIONTERRACE<small>EQUIPMENT MANUALS</small></a></div>
+<nav class="topnav"><a href="../index.html#lighting">← All equipment</a></nav>
+<span class="lang" role="group" aria-label="Language">
+<button type="button" id="lang-en" class="on" aria-pressed="true">EN</button>
+<button type="button" id="lang-zh" aria-pressed="false">中文</button>
+</span>
+</div></header>
+<div class="hero"><div class="wrap">
+<h1><span class="cat-icon" style="background:var(--lighting);margin-right:10px"></span><span data-en="Lighting &amp; Controls" data-zh="燈光及遙控">Lighting &amp; Controls</span></h1>
+<p data-en="Smart lighting and remote controls" data-zh="智能燈光及遙控器">Smart lighting and remote controls</p>
+<div class="stats"><div class="stat"><b>1</b><span data-en="Items" data-zh="項目">Items</span></div></div>
+</div></div>
+<section class="cat"><div class="wrap"><div class="grid">
+<article class="card">
+<div class="thumb"><span class="ph">▤</span></div>
+<div class="body">
+<div class="brandline">IKEA <span class="pill" style="background:var(--lighting)22;color:var(--lighting)">RODRET</span></div>
+<h3><a href="ikea-rodret/index.html" style="color:inherit">RODRET Wireless Dimmer / Power Switch for Smart Lights</a></h3>
+<div class="model">宜家 · 智能燈光遙控器</div>
+<p class="desc" data-en="Wireless dimmer and power switch for IKEA smart lights and plugs. Works standalone or with the DIRIGERA hub and the IKEA Home smart app. Pair up to 10 devices without a hub." data-zh="宜家智能燈光及插座專用無線調光及開關掣。可單獨使用，或配合 DIRIGERA 中樞及 IKEA Home smart 應用程式；沒有中樞時最多可配對 10 部裝置。">Wireless dimmer and power switch for IKEA smart lights and plugs. Works standalone or with the DIRIGERA hub and the IKEA Home smart app. Pair up to 10 devices without a hub.</p>
+<div class="acts">
+<a class="btn pri" href="ikea-rodret/index.html"><span data-en="Quick reference" data-zh="快速參考">Quick reference</span> →</a>
+<a class="btn" href="ikea-rodret/ikea-rodret-light-remote-manual.pdf">PDF<span class="ext">↗</span></a>
+</div></div></article>
+</div></div></section>
+<footer><div class="wrap fl"><div>TAIONTERRACE · Equipment Manual Library</div><div>Manuals reproduced from official manufacturer sites</div></div></footer>
+<script>
+(function(){
+  var KEY='tt-manuals-lang', body=document.body;
+  var bEn=document.getElementById('lang-en'), bZh=document.getElementById('lang-zh');
+  var titleEn=body.getAttribute('data-title-en')||document.title;
+  var titleZh=body.getAttribute('data-title-zh')||document.title;
+
+  // Every translatable element carries data-en (markup) and data-zh (markup).
+  // Cache the English markup once, then swap innerHTML on toggle so inline
+  // markup like <strong> survives the switch.
+  var items=[].slice.call(document.querySelectorAll('[data-en][data-zh]'));
+  items.forEach(function(el){
+    el.setAttribute('data-en-orig', el.innerHTML);
+    el.setAttribute('data-zh-orig', el.getAttribute('data-zh'));
+  });
+
+  function apply(l){
+    items.forEach(function(el){
+      el.innerHTML = (l==='zh') ? el.getAttribute('data-zh-orig')
+                                : el.getAttribute('data-en-orig');
+    });
+  }
+
+  function set(l){
+    if(l==='zh'){
+      body.classList.add('lang-zh');
+      bEn.classList.remove('on'); bEn.setAttribute('aria-pressed','false');
+      bZh.classList.add('on');    bZh.setAttribute('aria-pressed','true');
+      document.documentElement.setAttribute('lang','zh-Hant');
+    }else{
+      body.classList.remove('lang-zh');
+      bZh.classList.remove('on'); bZh.setAttribute('aria-pressed','false');
+      bEn.classList.add('on');    bEn.setAttribute('aria-pressed','true');
+      document.documentElement.setAttribute('lang','en');
+    }
+    apply(l);
+    document.title = (l==='zh')?titleZh:titleEn;
+    try{localStorage.setItem(KEY,l);}catch(e){}
+  }
+
+  bEn.addEventListener('click',function(){set('en');});
+  bZh.addEventListener('click',function(){set('zh');});
+  try{ if(localStorage.getItem(KEY)==='zh') set('zh'); }catch(e){}
+})();
+</script>
+</body></html>

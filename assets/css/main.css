@@ -1,0 +1,208 @@
+:root{
+  --bg:#0b0f14; --bg2:#0e141b; --card:#111820; --card2:#151d26;
+  --border:#1f2a36; --border2:#2a3745;
+  --fg:#e6edf3; --muted:#9aa6b2; --dim:#6f7c8a;
+  --accent:#4da3ff; --accent-dim:rgba(77,163,255,.12);
+  --laundry:#4da3ff; --kitchen:#f2a541; --cleaning:#4ec9a5;
+  --climate:#59a5f5; --entertain:#c98bdb; --water:#4ec9a5; --lighting:#e8c547;
+  --radius:12px; --radius-s:8px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0; background:var(--bg); color:var(--fg);
+  font:15px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,"Noto Sans TC","PingFang HK","Microsoft JhengHei",sans-serif;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:var(--accent); text-decoration:none}
+a:hover{text-decoration:underline}
+img{max-width:100%; display:block}
+
+/* ---------- layout ---------- */
+.wrap{max-width:1180px; margin:0 auto; padding:0 22px}
+header.top{
+  position:sticky; top:0; z-index:50; background:rgba(11,15,20,.94);
+  backdrop-filter:blur(8px); border-bottom:1px solid var(--border);
+}
+.top-in{display:flex; align-items:center; gap:16px; height:60px}
+.brand{display:flex; align-items:center; gap:10px; font-weight:700; letter-spacing:.2px; color:var(--fg)}
+.brand .dot{width:10px;height:10px;border-radius:50%;background:var(--accent);flex:0 0 auto}
+.brand small{display:block; font-weight:400; font-size:11px; color:var(--dim); letter-spacing:.4px}
+nav.topnav{display:flex; gap:2px; margin-left:8px; flex-wrap:wrap}
+nav.topnav a{
+  color:var(--muted); padding:7px 11px; border-radius:var(--radius-s); font-size:13.5px; white-space:nowrap;
+}
+nav.topnav a:hover{background:var(--card); color:var(--fg); text-decoration:none}
+nav.topnav a.on{background:var(--accent-dim); color:var(--accent)}
+.lang{margin-left:auto; display:inline-flex; padding:2px; background:var(--card); border:1px solid var(--border); border-radius:var(--radius-s)}
+.lang button{
+  background:transparent; border:0; color:var(--muted); font:inherit; font-size:12.5px;
+  padding:5px 11px; border-radius:6px; cursor:pointer;
+}
+.lang button:hover{color:var(--accent)}
+.lang button.on{background:var(--accent-dim); color:var(--accent); font-weight:600}
+
+/* ---------- hero ---------- */
+.hero{padding:52px 0 30px; border-bottom:1px solid var(--border); background:
+  linear-gradient(180deg,#0d141c 0%, var(--bg) 100%);}
+.hero h1{margin:0 0 10px; font-size:34px; line-height:1.2; letter-spacing:-.4px}
+.hero p{margin:0; color:var(--muted); max-width:70ch; font-size:15.5px}
+.hero .stats{display:flex; gap:26px; margin-top:24px; flex-wrap:wrap}
+.stat b{display:block; font-size:22px; color:var(--fg)}
+.stat span{font-size:11.5px; color:var(--dim); text-transform:uppercase; letter-spacing:.7px}
+
+/* ---------- search ---------- */
+.searchbar{margin:26px 0 0; position:relative; max-width:520px}
+.searchbar input{
+  width:100%; padding:11px 40px 11px 14px; background:var(--card); color:var(--fg);
+  border:1px solid var(--border2); border-radius:var(--radius-s); font:inherit; font-size:14px;
+}
+.searchbar input:focus{outline:none; border-color:var(--accent); background:var(--bg2)}
+.searchbar .clr{position:absolute; right:8px; top:50%; transform:translateY(-50%);
+  background:transparent;border:0;color:var(--dim);cursor:pointer;font-size:17px;padding:4px 8px;line-height:1}
+.searchbar .clr:hover{color:var(--fg)}
+
+/* ---------- category ---------- */
+section.cat{padding:34px 0 6px; border-bottom:1px solid var(--border)}
+section.cat:last-of-type{border-bottom:0}
+.cat-h{display:flex; align-items:baseline; gap:12px; margin-bottom:4px}
+.cat-h h2{margin:0; font-size:19px; letter-spacing:-.2px; display:flex; align-items:center; gap:9px}
+.cat-h .num{color:var(--dim); font-size:12px; font-variant-numeric:tabular-nums}
+.cat-h .zh{color:var(--dim); font-size:13px; font-weight:400}
+.cat-sub{color:var(--dim); font-size:13px; margin:0 0 18px}
+.cat-icon{width:9px;height:9px;border-radius:2px;display:inline-block}
+
+/* ---------- grid + cards ---------- */
+.grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(292px,1fr)); gap:14px; padding-bottom:30px}
+.card{
+  background:var(--card); border:1px solid var(--border); border-radius:var(--radius);
+  overflow:hidden; display:flex; flex-direction:column;
+  transition:border-color .15s, background .15s;
+}
+.card:hover{border-color:var(--border2); background:var(--card2)}
+.card .thumb{aspect-ratio:16/10; background:var(--bg2); display:flex; align-items:center; justify-content:center;
+  overflow:hidden; border-bottom:1px solid var(--border)}
+.card .thumb img{width:100%; height:100%; object-fit:contain; padding:12px}
+.card .thumb .ph{font-size:30px; color:var(--dim)}
+.card .body{padding:14px 15px 15px; display:flex; flex-direction:column; gap:9px; flex:1}
+.card .brandline{display:flex; align-items:center; gap:7px; font-size:11px; letter-spacing:.7px;
+  text-transform:uppercase; color:var(--dim); font-weight:600}
+.card .brandline .pill{padding:2px 7px; border-radius:5px; font-size:10px; letter-spacing:.4px}
+.card h3{margin:0; font-size:15.5px; line-height:1.35; font-weight:600}
+.card .model{font-size:12.5px; color:var(--muted); font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
+.card .desc{font-size:13px; color:var(--muted); margin:0}
+.card .specs{display:flex; flex-wrap:wrap; gap:5px; margin-top:2px}
+.card .specs span{font-size:11px; color:var(--dim); background:var(--bg2); border:1px solid var(--border);
+  padding:2px 7px; border-radius:5px; white-space:nowrap}
+.card .acts{margin-top:auto; padding-top:11px; display:flex; gap:7px; flex-wrap:wrap; align-items:center}
+.btn{
+  display:inline-flex; align-items:center; gap:6px; padding:7px 12px; border-radius:var(--radius-s);
+  font-size:13px; font-weight:500; border:1px solid var(--border2); color:var(--fg); background:var(--bg2);
+}
+.btn:hover{border-color:var(--accent); color:var(--accent); text-decoration:none}
+.btn.pri{background:var(--accent); border-color:var(--accent); color:#04121f; font-weight:600}
+.btn.pri:hover{background:#6cb6ff; border-color:#6cb6ff; color:#04121f}
+.btn .ext{opacity:.55; font-size:11px}
+.filecount{font-size:11.5px; color:var(--dim); margin-left:auto}
+
+/* ---------- detail page ---------- */
+.crumbs{padding:16px 0 0; font-size:13px; color:var(--dim)}
+.crumbs a{color:var(--muted)}
+.crumbs a:hover{color:var(--accent)}
+.detail{display:grid; grid-template-columns:minmax(0,1fr) 320px; gap:26px; padding:20px 0 50px; align-items:start}
+.detail-main .imgbox{
+  background:var(--card); border:1px solid var(--border); border-radius:var(--radius);
+  aspect-ratio:16/9; display:flex; align-items:center; justify-content:center; overflow:hidden; margin-bottom:20px;
+}
+.detail-main .imgbox img{max-height:100%; max-width:100%; object-fit:contain; padding:16px}
+.detail h1{margin:0 0 6px; font-size:27px; letter-spacing:-.3px}
+.detail .sub{color:var(--muted); margin:0 0 18px; font-size:14.5px}
+.detail .modelline{font-family:ui-monospace,SFMono-Regular,Menlo,monospace; font-size:13px; color:var(--accent);
+  background:var(--accent-dim); display:inline-block; padding:3px 9px; border-radius:6px; margin-bottom:16px}
+.detail h3{font-size:16px; margin:26px 0 10px; padding-bottom:7px; border-bottom:1px solid var(--border)}
+.detail p{color:var(--muted); margin:0 0 12px}
+table.spec{width:100%; border-collapse:collapse; font-size:13.5px}
+table.spec td{padding:8px 10px; border-bottom:1px solid var(--border); vertical-align:top}
+table.spec td:first-child{color:var(--dim); width:42%; white-space:nowrap}
+table.spec td:last-child{color:var(--fg)}
+table.spec tr:last-child td{border-bottom:0}
+ul.tips{margin:0 0 12px; padding-left:20px; color:var(--muted)}
+ul.tips li{margin-bottom:6px}
+ul.tips li strong{color:var(--fg)}
+aside.side{position:sticky; top:76px; display:flex; flex-direction:column; gap:14px}
+.card.box{background:var(--card); border:1px solid var(--border); border-radius:var(--radius); padding:15px}
+.card.box h4{margin:0 0 11px; font-size:13px; text-transform:uppercase; letter-spacing:.7px; color:var(--dim)}
+.dl{display:flex; flex-direction:column; gap:8px}
+.dl a{
+  display:flex; align-items:center; gap:9px; padding:10px 11px; background:var(--bg2);
+  border:1px solid var(--border); border-radius:var(--radius-s); color:var(--fg); font-size:13px;
+}
+.dl a:hover{border-color:var(--accent); text-decoration:none}
+.dl a .ic{width:26px;height:26px;border-radius:5px;background:var(--accent-dim); color:var(--accent);
+  display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex:0 0 auto}
+.dl a .fn{font-weight:500; line-height:1.3; display:block}
+.dl a .fd{font-size:11px; color:var(--dim); margin-top:2px; display:block}
+.dl a > span:not(.ic):not(.sz){min-width:0}
+.dl a .sz{margin-left:auto; font-size:11px; color:var(--dim); white-space:nowrap}
+.helpbox{font-size:13px; color:var(--muted)}
+.helpbox b{color:var(--fg)}
+.helpbox .tel{font-size:19px; color:var(--accent); font-weight:700; display:block; margin:5px 0}
+.navprev{display:flex; gap:9px; margin-top:26px; padding-top:18px; border-top:1px solid var(--border)}
+.navprev a{flex:1; padding:11px 13px; background:var(--card); border:1px solid var(--border); border-radius:var(--radius-s);
+  font-size:13px; color:var(--muted)}
+.navprev a:hover{border-color:var(--accent); text-decoration:none}
+.navprev a span{display:block; font-size:11px; color:var(--dim); margin-bottom:3px}
+.navprev a.next{text-align:right}
+
+/* ---------- footer ---------- */
+footer{margin-top:40px; border-top:1px solid var(--border); padding:26px 0 40px; color:var(--dim); font-size:12.5px}
+footer .fl{display:flex; justify-content:space-between; gap:20px; flex-wrap:wrap}
+footer a{color:var(--muted)}
+
+.nores{display:none; padding:60px 0; text-align:center; color:var(--dim); font-size:15px}
+.nores.show{display:block}
+
+/* ---------- i18n ----------
+   Language switching is done in JS (see LANG_JS in the generator): each
+   element carries data-en (the English markup it renders) and data-zh (the
+   Chinese markup). A CSS ::after / attr() swap cannot work here because the
+   Chinese strings contain inline markup (<strong>) that attr() would print
+   literally, and because every element carries BOTH attributes, so a
+   [data-zh] rule would override the [data-en] rule.
+   Without JS the page renders the English inline text, which reads fine. */
+
+@media (max-width:900px){
+  .detail{grid-template-columns:1fr}
+  aside.side{position:static}
+  .hero h1{font-size:26px}
+  nav.topnav{display:none}
+}
+@media (max-width:520px){
+  .grid{grid-template-columns:1fr}
+  .wrap{padding:0 15px}
+  .hero{padding:34px 0 22px}
+}
+
+/* --- companion app links (e.g. Panasonic Comfort Cloud) --- */
+.appblock{padding:9px 0;border-top:1px solid var(--line)}
+.appblock:first-of-type{border-top:0;padding-top:2px}
+.applinks{display:flex;flex-wrap:wrap;gap:6px;margin-top:7px}
+.applinks a{display:inline-flex;align-items:center;gap:4px;font-size:11.5px;line-height:1.35;
+  padding:5px 9px;border:1px solid var(--line);border-radius:6px;color:var(--accent);
+  background:var(--accent-dim);text-decoration:none;transition:border-color .15s,background .15s}
+.applinks a:hover{border-color:var(--accent);text-decoration:none}
+
+/* --- program functions table (wide: horizontal scroll on small screens) --- */
+.progwrap{overflow-x:auto;-webkit-overflow-scrolling:touch;border:1px solid var(--border);
+  border-radius:8px;background:var(--bg2)}
+table.prog{width:100%;border-collapse:collapse;font-size:12.5px;min-width:720px}
+table.prog th{text-align:left;padding:9px 11px;font-weight:600;color:var(--fg);
+  background:var(--bg3);border-bottom:1px solid var(--border);white-space:nowrap;font-size:11.5px;
+  letter-spacing:.02em}
+table.prog td{padding:9px 11px;border-bottom:1px solid var(--border);vertical-align:top;
+  color:var(--muted);white-space:nowrap}
+table.prog td:first-child{color:var(--fg);font-weight:600}
+table.prog td:nth-child(2){color:var(--fg)}
+table.prog tr:last-child td{border-bottom:0}
+table.prog tbody tr:hover td{background:var(--bg3)}
+.prognote{font-size:12.5px;color:var(--muted);margin-top:9px;line-height:1.5}
